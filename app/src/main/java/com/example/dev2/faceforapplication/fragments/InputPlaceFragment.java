@@ -89,10 +89,11 @@ public class InputPlaceFragment extends Fragment {
         inputPlaceFragment = View.inflate(getActivity(), R.layout.fragment_input_place, null);
         // Inflate the layout for this fragment
         textView = (TextView) inputPlaceFragment.findViewById(R.id.textView);
+        textView.setSingleLine();
+
         btCleane = (ImageButton) inputPlaceFragment.findViewById(R.id.imageButton);
-
         btCleane.setOnClickListener(listener);
-
+        btCleane.setOnLongClickListener(longClick);
         return inputPlaceFragment;
     }
 
@@ -100,7 +101,6 @@ public class InputPlaceFragment extends Fragment {
 
         if (text.length() >= 10) {
             textView.setTextSize(48);
-            textView.setSingleLine();
         }
         textView.setText(text);
     }
@@ -169,6 +169,20 @@ public class InputPlaceFragment extends Fragment {
             }
             textView.setText(text);
             if (ButtonsFragment.tg !=null)  ButtonsFragment.tg.stopTone();
+        }
+    };
+
+    View.OnLongClickListener longClick = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+            switch (v.getId()) {
+                case R.id.imageButton:
+                    ButtonsFragment.tg.startTone(ToneGenerator.TONE_DTMF_S);
+                        textView.setText("");
+                    break;
+            }
+            if (ButtonsFragment.tg !=null)  ButtonsFragment.tg.stopTone();
+            return true;
         }
     };
 

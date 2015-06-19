@@ -43,9 +43,9 @@ public class ButtonsFragment extends Fragment {
 
     private View buttonsFrgment;
 
-    private ImageButton btCleane;
+//    private ImageButton btCleane;
     private ImageButton btStar;
-    private ImageButton btZero;
+//    private ImageButton btZero;
     private ImageButton btPount;
 //    public static  TextView textView;
 
@@ -106,14 +106,14 @@ public class ButtonsFragment extends Fragment {
 
 //        btCleane = (ImageButton) buttonsFrgment.findViewById(R.id.imageButton);
         btStar = (ImageButton) buttonsFrgment.findViewById(R.id.imBt_11);
-        btZero = (ImageButton) buttonsFrgment.findViewById(R.id.imBt_10);
+//        btZero = (ImageButton) buttonsFrgment.findViewById(R.id.imBt_10);
         btPount = (ImageButton) buttonsFrgment.findViewById(R.id.imBt_12);
 //        textView = (TextView) buttonsFrgment.findViewById(R.id.textView);
 
 
 //        btCleane.setOnClickListener(listener);
         btStar.setOnClickListener(listener);
-        btZero.setOnClickListener(listener);
+//        btZero.setOnClickListener(listener);
         btPount.setOnClickListener(listener);
 
 
@@ -140,7 +140,8 @@ public class ButtonsFragment extends Fragment {
                 public void onClick(View v) {
 //                    textView.setText(textView.getText().toString()+ b);
                     text =InputPlaceFragment.getTextFromTextView();
-                    InputPlaceFragment.setTextInToTextView(text + b);
+                    String saveText = text + b;
+                    InputPlaceFragment.setTextInToTextView(saveText);
                     tg.startTone(Integer.parseInt(b));
                     if (tg != null) tg.stopTone();
                 }
@@ -199,7 +200,7 @@ public class ButtonsFragment extends Fragment {
 
             switch (v.getId()) {
                 case R.id.imBt_11:
-                    text = text + "*";
+                    text = InputPlaceFragment.getTextFromTextView() + "*";
                     tg.startTone(ToneGenerator.TONE_DTMF_A);
                     break;
                 case R.id.imBt_12:
