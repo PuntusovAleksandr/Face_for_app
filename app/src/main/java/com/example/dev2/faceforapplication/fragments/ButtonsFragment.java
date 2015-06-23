@@ -53,8 +53,9 @@ public class ButtonsFragment extends Fragment {
     private int idIntButton;
     private ImageButton[] bt = new ImageButton[11];
 
-    private String text;
+    private String saveText;
 
+    private String text;
     public static  ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, (int)(ToneGenerator.MAX_VOLUME * 1));;
 
 //    :	tg.startTone(ToneGenerator.TONE_PROP_BEEP);
@@ -140,7 +141,7 @@ public class ButtonsFragment extends Fragment {
                 public void onClick(View v) {
 //                    textView.setText(textView.getText().toString()+ b);
                     text =InputPlaceFragment.getTextFromTextView();
-                    String saveText = text + b;
+                    saveText  = text + b;
                     InputPlaceFragment.setTextInToTextView(saveText);
                     tg.startTone(Integer.parseInt(b));
                     if (tg != null) tg.stopTone();
@@ -200,17 +201,19 @@ public class ButtonsFragment extends Fragment {
 
             switch (v.getId()) {
                 case R.id.imBt_11:
-                    text = InputPlaceFragment.getTextFromTextView() + "*";
+                    text = InputPlaceFragment.getTextFromTextView();
+                    saveText= text+ "*";
                     tg.startTone(ToneGenerator.TONE_DTMF_A);
                     break;
                 case R.id.imBt_12:
-                    text = text + "#";
+                    text = InputPlaceFragment.getTextFromTextView();
+                    saveText = text + "#";
                     tg.startTone(ToneGenerator.TONE_DTMF_P);
                     break;
                 default:
                     break;
             }
-            InputPlaceFragment.setTextInToTextView(text);
+            InputPlaceFragment.setTextInToTextView(saveText);
             if (tg !=null)  tg.stopTone();
         }
     };
