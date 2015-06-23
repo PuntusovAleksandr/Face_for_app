@@ -20,6 +20,7 @@ import com.example.dev2.faceforapplication.fragments.ButtonsFragment;
 import com.example.dev2.faceforapplication.fragments.CallButtonsFragment;
 import com.example.dev2.faceforapplication.fragments.InputPlaceFragment;
 import com.example.dev2.faceforapplication.otherActivity.CallActivity;
+import com.example.dev2.faceforapplication.otherActivity.SettingActivity;
 
 /**
  * The type Main activity.
@@ -124,15 +125,13 @@ public class MainActivity extends ActionBarActivity implements
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.item_setting) {
+            intent = new Intent(MainActivity.this, SettingActivity.class);
+            startActivity(intent);
+//            return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        super.onCreateContextMenu(menu, v, menuInfo);
-//    }
 }
