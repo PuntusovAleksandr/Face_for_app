@@ -1,5 +1,7 @@
 package com.example.dev2.faceforapplication;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -7,6 +9,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -16,7 +21,7 @@ import com.example.dev2.faceforapplication.fragments.CallButtonsFragment;
 import com.example.dev2.faceforapplication.fragments.InputPlaceFragment;
 import com.example.dev2.faceforapplication.otherActivity.CallActivity;
 
-public class MainActivity extends FragmentActivity implements
+public class MainActivity extends ActionBarActivity implements
         ButtonsFragment.OnFragmentInteractionListener,
         CallButtonsFragment.OnFragmentInteractionListener,
         InputPlaceFragment.OnFragmentInteractionListener {
@@ -57,24 +62,27 @@ public class MainActivity extends FragmentActivity implements
 //        Fragment input = manager.findFragmentByTag(InputPlaceFragment.TAG);
 //        inputPlace = (TextView) input.getView().findViewById(R.id.textView);
 
+
         if (savedInstanceState == null) {
             transaction = manager.beginTransaction();
             transaction.add(R.id.ll_head, inputPlaceFragment, InputPlaceFragment.TAG);
-            transaction.add(R.id.ll_body,buttonsFragment, ButtonsFragment.TAG );
+            transaction.add(R.id.ll_body, buttonsFragment, ButtonsFragment.TAG);
             transaction.add(R.id.ll_bottom, callButtonsFragment, CallButtonsFragment.TAG);
             transaction.commit();
         }
+
+
     }
 
     public void onClickButtonsCall(View view) {
         transaction = manager.beginTransaction();
         Fragment buttFragmentByTag = manager.findFragmentByTag(ButtonsFragment.TAG);
         Fragment callButtFragmentByTag = manager.findFragmentByTag(CallButtonsFragment.TAG);
-        Fragment inputPlaceFragment  = manager.findFragmentByTag(InputPlaceFragment.TAG);
+        Fragment inputPlaceFragment = manager.findFragmentByTag(InputPlaceFragment.TAG);
 
         switch (view.getId()) {
             case R.id.imBt_call:
-                if ( buttFragmentByTag != null && callButtFragmentByTag != null) {
+                if (buttFragmentByTag != null && callButtFragmentByTag != null) {
                     InputPlaceFragment.setTextInToTextView("");
                     intent = new Intent(MainActivity.this, CallActivity.class);
                     startActivity(intent);
@@ -91,25 +99,32 @@ public class MainActivity extends FragmentActivity implements
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 //    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
+//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+//        super.onCreateContextMenu(menu, v, menuInfo);
 //    }
 }

@@ -7,24 +7,24 @@
     <!-- TODO: Update blank fragment layout -->
 
     <RelativeLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#55006600"
+            android:layout_gravity="top"
             android:layout_weight="1"
-            android:weightSum="1"
-            android:layout_gravity="top">
+            android:background="#55006600"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <ImageView
+                android:id="@+id/imContact"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imContact"
                 android:src="@drawable/ic_contact_picture_180_holo_light" />
         </LinearLayout>
 
