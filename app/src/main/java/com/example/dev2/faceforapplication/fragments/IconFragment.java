@@ -20,6 +20,9 @@ import com.example.dev2.faceforapplication.R;
  */
 public class IconFragment extends Fragment {
 
+    /**
+     * The constant TAG.
+     */
     public static final String TAG ="IconFragment";
 
 
@@ -39,6 +42,11 @@ public class IconFragment extends Fragment {
 
     private View iconFragment;
 
+    /**
+     * New instance.
+     *
+     * @return the icon fragment
+     */
     public IconFragment newInstance() {
         if (fragment == null) {
             fragment = new IconFragment();
@@ -64,6 +72,9 @@ public class IconFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Instantiates a new Icon fragment.
+     */
     public IconFragment() {
         // Required empty public constructor
     }
@@ -86,7 +97,12 @@ public class IconFragment extends Fragment {
         return iconFragment;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    /**
+     * On button pressed.
+     *
+     * @param uri the uri
+     */
+// TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -121,7 +137,12 @@ public class IconFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+        /**
+         * On fragment interaction.
+         *
+         * @param uri the uri
+         */
+// TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
 

@@ -25,6 +25,9 @@ import com.example.dev2.faceforapplication.R;
  */
 public class ButtonsFragment extends Fragment {
 
+    /**
+     * The constant TAG.
+     */
     public static final String TAG ="ButtonsFragment";
 
 
@@ -56,6 +59,9 @@ public class ButtonsFragment extends Fragment {
     private String saveText;
 
     private String text;
+    /**
+     * The constant tg.
+     */
     public static  ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, (int)(ToneGenerator.MAX_VOLUME * 1));;
 
 //    :	tg.startTone(ToneGenerator.TONE_PROP_BEEP);
@@ -78,6 +84,11 @@ public class ButtonsFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * New instance.
+     *
+     * @return the buttons fragment
+     */
     public ButtonsFragment newInstance() {
         if (fragment == null) {
             fragment = new ButtonsFragment();
@@ -85,6 +96,9 @@ public class ButtonsFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Instantiates a new Buttons fragment.
+     */
     public ButtonsFragment() {
         // Required empty public constructor
     }
@@ -154,7 +168,12 @@ public class ButtonsFragment extends Fragment {
         return buttonsFrgment;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    /**
+     * On button pressed.
+     *
+     * @param uri the uri
+     */
+// TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -190,10 +209,18 @@ public class ButtonsFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+        /**
+         * On fragment interaction.
+         *
+         * @param uri the uri
+         */
+// TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
 
+    /**
+     * The Listener.
+     */
     View.OnClickListener listener = new View.OnClickListener() {
 
         @Override

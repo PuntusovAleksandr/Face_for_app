@@ -23,6 +23,9 @@ import com.example.dev2.faceforapplication.R;
  */
 public class InputPlaceFragment extends Fragment {
 
+    /**
+     * The constant TAG.
+     */
     public static final String TAG ="InputPlaceFragment";
 
 
@@ -44,6 +47,11 @@ public class InputPlaceFragment extends Fragment {
 
     private View inputPlaceFragment;
 
+    /**
+     * New instance.
+     *
+     * @return the input place fragment
+     */
     public InputPlaceFragment newInstance() {
         if (fragment == null) {
             fragment = new InputPlaceFragment();
@@ -69,6 +77,9 @@ public class InputPlaceFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Instantiates a new Input place fragment.
+     */
     public InputPlaceFragment() {
         // Required empty public constructor
     }
@@ -97,6 +108,11 @@ public class InputPlaceFragment extends Fragment {
         return inputPlaceFragment;
     }
 
+    /**
+     * Sets text in to text view.
+     *
+     * @param text the text
+     */
     public static void  setTextInToTextView(String text) {
 
         if (text.length() >= 10) {
@@ -105,11 +121,21 @@ public class InputPlaceFragment extends Fragment {
         textView.setText(text);
     }
 
+    /**
+     * Gets text from text view.
+     *
+     * @return the text from text view
+     */
     public static String getTextFromTextView() {
         return textView.getText().toString();
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    /**
+     * On button pressed.
+     *
+     * @param uri the uri
+     */
+// TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -144,10 +170,18 @@ public class InputPlaceFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+        /**
+         * On fragment interaction.
+         *
+         * @param uri the uri
+         */
+// TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
 
+    /**
+     * The Listener.
+     */
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -172,6 +206,9 @@ public class InputPlaceFragment extends Fragment {
         }
     };
 
+    /**
+     * The Long click.
+     */
     View.OnLongClickListener longClick = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View v) {

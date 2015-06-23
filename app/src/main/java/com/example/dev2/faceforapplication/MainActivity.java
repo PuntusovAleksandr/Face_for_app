@@ -21,6 +21,9 @@ import com.example.dev2.faceforapplication.fragments.CallButtonsFragment;
 import com.example.dev2.faceforapplication.fragments.InputPlaceFragment;
 import com.example.dev2.faceforapplication.otherActivity.CallActivity;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends ActionBarActivity implements
         ButtonsFragment.OnFragmentInteractionListener,
         CallButtonsFragment.OnFragmentInteractionListener,
@@ -74,6 +77,11 @@ public class MainActivity extends ActionBarActivity implements
 
     }
 
+    /**
+     * On click buttons call.
+     *
+     * @param view the view
+     */
     public void onClickButtonsCall(View view) {
         transaction = manager.beginTransaction();
         Fragment buttFragmentByTag = manager.findFragmentByTag(ButtonsFragment.TAG);

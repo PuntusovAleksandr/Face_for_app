@@ -16,7 +16,9 @@ import com.example.dev2.faceforapplication.fragments.EndCallFragment;
 import com.example.dev2.faceforapplication.fragments.IconFragment;
 
 
-
+/**
+ * The type Call activity.
+ */
 public class CallActivity extends FragmentActivity  implements
         EndCallFragment.OnFragmentInteractionListener,
         IconFragment.OnFragmentInteractionListener{
@@ -47,7 +49,12 @@ public class CallActivity extends FragmentActivity  implements
         }
     }
 
-public void onClickFromOtherActivity(View view) {
+    /**
+     * On click from other activity.
+     *
+     * @param view the view
+     */
+    public void onClickFromOtherActivity(View view) {
         transaction = manager.beginTransaction();
         Fragment endButtFragmentByTag = manager.findFragmentByTag(EndCallFragment.TAG);
         Fragment icFragmentByTag = manager.findFragmentByTag(IconFragment.TAG);

@@ -20,6 +20,9 @@ import com.example.dev2.faceforapplication.R;
  */
 public class EndCallFragment extends Fragment {
 
+    /**
+     * The constant TAG.
+     */
     public static final String TAG ="EndCallFragment";
 
 
@@ -37,6 +40,11 @@ public class EndCallFragment extends Fragment {
     private static EndCallFragment fragment;
     private View endCallFragment;
 
+    /**
+     * New instance.
+     *
+     * @return the end call fragment
+     */
     public EndCallFragment newInstance() {
         if (fragment == null) {
             fragment = new EndCallFragment();
@@ -62,6 +70,9 @@ public class EndCallFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Instantiates a new End call fragment.
+     */
     public EndCallFragment() {
         // Required empty public constructor
     }
@@ -84,7 +95,12 @@ public class EndCallFragment extends Fragment {
         return endCallFragment;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    /**
+     * On button pressed.
+     *
+     * @param uri the uri
+     */
+// TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -119,7 +135,12 @@ public class EndCallFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+        /**
+         * On fragment interaction.
+         *
+         * @param uri the uri
+         */
+// TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
 

@@ -7,26 +7,18 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.dev2.faceforapplication.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CallButtonsFragment.OnFragmentInteractionListener} interface
+ * {@link HistoryFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CallButtonsFragment#newInstance} factory method to
+ * Use the {@link HistoryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CallButtonsFragment extends Fragment {
-
-    /**
-     * The constant TAG.
-     */
-    public static final String TAG ="CallButtonsFragment";
-    private Button btCall;
-
+public class HistoryFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,34 +30,17 @@ public class CallButtonsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    private static CallButtonsFragment fragment;
-
-    private View callButtonsFragmetnt;
-
-    /**
-     * New instance.
-     *
-     * @return the call buttons fragment
-     */
-    public CallButtonsFragment newInstance() {
-        if (fragment == null) {
-            fragment = new CallButtonsFragment();
-        }
-        return fragment;
-    }
-
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CallButtonsFragment.
+     * @return A new instance of fragment HistoryFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CallButtonsFragment newInstance(String param1, String param2) {
-        CallButtonsFragment fragment = new CallButtonsFragment();
+    public static HistoryFragment newInstance(String param1, String param2) {
+        HistoryFragment fragment = new HistoryFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,9 +49,9 @@ public class CallButtonsFragment extends Fragment {
     }
 
     /**
-     * Instantiates a new Call buttons fragment.
+     * Instantiates a new History fragment.
      */
-    public CallButtonsFragment() {
+    public HistoryFragment() {
         // Required empty public constructor
     }
 
@@ -92,10 +67,8 @@ public class CallButtonsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setRetainInstance(true);
-        callButtonsFragmetnt = View.inflate(getActivity(), R.layout.fragment_call_buttons, null);
         // Inflate the layout for this fragment
-        return callButtonsFragmetnt;
+        return inflater.inflate(R.layout.fragment_history, container, false);
     }
 
     /**
@@ -126,7 +99,6 @@ public class CallButtonsFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
 
     /**
      * This interface must be implemented by activities that contain this
