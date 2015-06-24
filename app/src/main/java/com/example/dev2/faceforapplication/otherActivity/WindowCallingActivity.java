@@ -45,7 +45,7 @@ public class WindowCallingActivity extends AppCompatActivity implements
         if (savedInstanceState == null) {
             transaction = manager.beginTransaction();
             transaction.add(R.id.ll_body_window_calling, iconFragment, IconFragment.TAG);
-            transaction.add(R.id.ll_call_up, callButtonsFragment, CallButtonsFragment.TAG);
+//            transaction.add(R.id.ll_call_up, callButtonsFragment, CallButtonsFragment.TAG);
             transaction.add(R.id.ll_call_cancel, endCallFragment, EndCallFragment.TAG);
             transaction.commit();
         }

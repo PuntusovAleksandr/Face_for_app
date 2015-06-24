@@ -18,6 +18,7 @@ import com.example.dev2.faceforapplication.fragments.CallButtonsFragment;
 import com.example.dev2.faceforapplication.fragments.InputPlaceFragment;
 import com.example.dev2.faceforapplication.otherActivity.CallActivity;
 import com.example.dev2.faceforapplication.otherActivity.SettingActivity;
+import com.example.dev2.faceforapplication.otherActivity.WindowCallingActivity;
 
 /**
  * The type Main activity.
@@ -84,6 +85,7 @@ public class MainActivity extends ActionBarActivity implements
                 if (buttFragmentByTag != null && callButtFragmentByTag != null) {
                     InputPlaceFragment.setTextInToTextView("");
                     intent = new Intent(MainActivity.this, CallActivity.class);
+//                    intent = new Intent(MainActivity.this, WindowCallingActivity.class);
                     startActivity(intent);
                 }
                 break;
