@@ -19,6 +19,11 @@ import com.example.dev2.faceforapplication.R;
  * create an instance of this fragment.
  */
 public class HistoryFragment extends Fragment {
+
+    public static final String TAG ="HistoryFragment";
+
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,6 +34,24 @@ public class HistoryFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+
+    private static HistoryFragment fragment;
+    private View historyFragment;
+
+    /**
+     * New instance.
+     *
+     * @return the end call fragment
+     */
+    public HistoryFragment newInstance() {
+        if (fragment == null) {
+            fragment = new HistoryFragment();
+        }
+        return fragment;
+    }
+
+
 
     /**
      * Use this factory method to create a new instance of
@@ -68,7 +91,10 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false);
+        setRetainInstance(true);
+        historyFragment = View.inflate(getActivity(), R.layout.fragment_history, null);
+
+        return historyFragment;
     }
 
     /**
