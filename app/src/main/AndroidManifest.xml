@@ -24,6 +24,11 @@
         <activity
             android:name=".otherActivity.SettingActivity"
             android:label="@string/action_settings" >
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+
         </activity>
     </application>
 

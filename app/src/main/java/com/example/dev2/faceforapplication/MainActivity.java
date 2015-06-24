@@ -1,14 +1,11 @@
 package com.example.dev2.faceforapplication;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,16 +53,11 @@ public class MainActivity extends ActionBarActivity implements
         viewEditeText = View.inflate(getApplicationContext(), R.layout.fragment_input_place, null);
         btCall = (ImageButton) viewEditeText.findViewById(R.id.imBt_call);
         btClean = (ImageButton) viewEditeText.findViewById(R.id.imageButton);
-//        inputPlace = (TextView) findViewById(R.id.imBt_call);
 
         manager = getFragmentManager();
         buttonsFragment = new ButtonsFragment().newInstance();
         callButtonsFragment = new CallButtonsFragment().newInstance();
         inputPlaceFragment = new InputPlaceFragment().newInstance();
-
-//        Fragment input = manager.findFragmentByTag(InputPlaceFragment.TAG);
-//        inputPlace = (TextView) input.getView().findViewById(R.id.textView);
-
 
         if (savedInstanceState == null) {
             transaction = manager.beginTransaction();
@@ -74,8 +66,6 @@ public class MainActivity extends ActionBarActivity implements
             transaction.add(R.id.ll_bottom, callButtonsFragment, CallButtonsFragment.TAG);
             transaction.commit();
         }
-
-
     }
 
     /**
@@ -103,9 +93,7 @@ public class MainActivity extends ActionBarActivity implements
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
+    public void onFragmentInteraction(Uri uri) {    }
 
 
     @Override
@@ -128,7 +116,7 @@ public class MainActivity extends ActionBarActivity implements
         if (id == R.id.item_setting) {
             intent = new Intent(MainActivity.this, SettingActivity.class);
             startActivity(intent);
-//            return true;
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
