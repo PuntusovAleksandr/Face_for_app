@@ -58,16 +58,16 @@ public class CallActivity extends FragmentActivity  implements
         transaction = manager.beginTransaction();
         Fragment endButtFragmentByTag = manager.findFragmentByTag(EndCallFragment.TAG);
         Fragment icFragmentByTag = manager.findFragmentByTag(IconFragment.TAG);
-            switch (view.getId()) {
-                case R.id.imBt_end_call:
-                    if (icFragmentByTag != null) {
-                       onBackPressed();
-                    }
-                    break;
-            }
-
-            transaction.commit();
+        switch (view.getId()) {
+            case R.id.imBt_end_call:
+                if (icFragmentByTag != null) {
+                    onBackPressed();
+                }
+                break;
         }
+
+        transaction.commit();
+    }
 
 
     @Override
