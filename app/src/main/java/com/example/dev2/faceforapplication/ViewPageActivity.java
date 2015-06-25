@@ -1,5 +1,7 @@
 package com.example.dev2.faceforapplication;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import android.content.ClipData;
@@ -32,7 +34,7 @@ import com.example.dev2.faceforapplication.otherActivity.SettingActivity;
 public class ViewPageActivity extends AppCompatActivity implements ActionBar.TabListener,
         ButtonsFragment.OnFragmentInteractionListener,
         CallButtonsFragment.OnFragmentInteractionListener,
-        InputPlaceFragment.OnFragmentInteractionListener{
+        InputPlaceFragment.OnFragmentInteractionListener {
 
     private static final int PAGE_COUNT = 3;
 
@@ -51,6 +53,11 @@ public class ViewPageActivity extends AppCompatActivity implements ActionBar.Tab
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+    private List<Fragment> listFragments;
+    private StartPageFragment startPageFragment;
+    private HistoryFragment historyFragment;
+    private ContactsFragment contactsFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +70,16 @@ public class ViewPageActivity extends AppCompatActivity implements ActionBar.Tab
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        startPageFragment = new StartPageFragment().newInstance();
+                historyFragment =  new HistoryFragment().newInstance();
+                        contactsFragment =new ContactsFragment().newInstance();
+
+        listFragments = new ArrayList<>();
+        listFragments.add(startPageFragment);
+        listFragments.add(historyFragment);
+        listFragments.add(contactsFragment);
+
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), listFragments);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -143,31 +159,26 @@ public class ViewPageActivity extends AppCompatActivity implements ActionBar.Tab
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        Fragment fragment = null;
+        private List<Fragment> fragmentList;
+
+
+        public SectionsPagerAdapter(FragmentManager fm, List<Fragment> fragmentList) {
             super(fm);
+            this.fragmentList = fragmentList;
         }
 
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-
-            switch (position) {
-                case 0:
-                    return new StartPageFragment().newInstance();
-                case 1:
-                    return new HistoryFragment().newInstance();
-                case 2:
-                    return new ContactsFragment().newInstance();
-                default:
-                    return null;
-            }
+            return fragmentList.get(position);
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return PAGE_COUNT;
+            return fragmentList.size();
         }
 
         @Override

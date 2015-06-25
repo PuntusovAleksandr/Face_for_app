@@ -104,6 +104,41 @@ public class StartPageFragment extends Fragment {
 
         return viewStartPageFragment;
     }
+//
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//
+//        manager = getFragmentManager();
+//        buttonsFragment = new ButtonsFragment().newInstance();
+//        callButtonsFragment = new CallButtonsFragment().newInstance();
+//        inputPlaceFragment = new InputPlaceFragment().newInstance();
+//
+////        if (savedInstanceState == null) {
+////            transaction = manager.beginTransaction();
+////            transaction.add(R.id.ll_head, inputPlaceFragment, InputPlaceFragment.TAG);
+////            transaction.add(R.id.ll_body, buttonsFragment, ButtonsFragment.TAG);
+////            transaction.add(R.id.ll_bottom, callButtonsFragment, CallButtonsFragment.TAG);
+////            transaction.commit();
+////        }
+//    }
+//
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (!transaction.isEmpty()) {
+            transaction = manager.beginTransaction();
+            transaction.remove(inputPlaceFragment);
+            transaction.remove(buttonsFragment);
+            transaction.remove(callButtonsFragment);
+            transaction.commit();
+//            transaction.replace(R.id.ll_head, inputPlaceFragment, InputPlaceFragment.TAG);
+//            transaction.replace(R.id.ll_body, buttonsFragment, ButtonsFragment.TAG);
+//            transaction.replace(R.id.ll_bottom, callButtonsFragment, CallButtonsFragment.TAG);
+
+        }
+
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

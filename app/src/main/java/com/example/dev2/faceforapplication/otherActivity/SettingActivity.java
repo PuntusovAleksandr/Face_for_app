@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.dev2.faceforapplication.R;
+import com.example.dev2.faceforapplication.fragments.StartPageFragment;
 
 public class SettingActivity extends AppCompatActivity {
 
