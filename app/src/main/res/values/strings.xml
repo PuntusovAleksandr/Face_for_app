@@ -19,7 +19,7 @@
     <string name="title_activity_window_calling">WindowCallingActivity</string>
     <string name="title_activity_view_page">ViewPageActivity</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section1">Call</string>
+    <string name="title_section2">History</string>
+    <string name="title_section3">Contacts</string>
 </resources>
