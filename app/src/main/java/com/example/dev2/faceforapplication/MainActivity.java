@@ -1,11 +1,11 @@
 package com.example.dev2.faceforapplication;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,7 +55,7 @@ public class MainActivity extends ActionBarActivity implements
         btCall = (ImageButton) viewEditeText.findViewById(R.id.imBt_call);
         btClean = (ImageButton) viewEditeText.findViewById(R.id.imageButton);
 
-        manager = getFragmentManager();
+        manager = getSupportFragmentManager();
         buttonsFragment = new ButtonsFragment().newInstance();
         callButtonsFragment = new CallButtonsFragment().newInstance();
         inputPlaceFragment = new InputPlaceFragment().newInstance();
