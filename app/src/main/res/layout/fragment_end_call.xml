@@ -19,7 +19,6 @@
             android:layout_height="fill_parent"
             android:background="#355"
             android:nestedScrollingEnabled="false"
-            android:onClick="onClickFromOtherActivity"
             android:src="@drawable/ic_jog_dial_decline" />
 
     </RelativeLayout>

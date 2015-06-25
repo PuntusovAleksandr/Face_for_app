@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +30,19 @@ public class StartPageFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
+    private View viewStartPageFragment;
+
+    private ButtonsFragment buttonsFragment;
+    private CallButtonsFragment callButtonsFragment;
+    private InputPlaceFragment inputPlaceFragment;
+
     private OnFragmentInteractionListener mListener;
 
     private static StartPageFragment fragment;
+
 
     public StartPageFragment newInstance() {
         if (fragment == null) {
@@ -74,7 +86,23 @@ public class StartPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_start_page, container, false);
+        setRetainInstance(true);
+        viewStartPageFragment = View.inflate(getActivity(), R.layout.fragment_start_page, null);
+
+        manager = getFragmentManager();
+        buttonsFragment = new ButtonsFragment().newInstance();
+        callButtonsFragment = new CallButtonsFragment().newInstance();
+        inputPlaceFragment = new InputPlaceFragment().newInstance();
+
+        if (savedInstanceState == null) {
+            transaction = manager.beginTransaction();
+            transaction.add(R.id.ll_head, inputPlaceFragment, InputPlaceFragment.TAG);
+            transaction.add(R.id.ll_body, buttonsFragment, ButtonsFragment.TAG);
+            transaction.add(R.id.ll_bottom, callButtonsFragment, CallButtonsFragment.TAG);
+            transaction.commit();
+        }
+
+        return viewStartPageFragment;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

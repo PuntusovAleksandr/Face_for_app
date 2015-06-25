@@ -1,14 +1,18 @@
 package com.example.dev2.faceforapplication.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.dev2.faceforapplication.R;
+import com.example.dev2.faceforapplication.ViewPageActivity;
+import com.example.dev2.faceforapplication.otherActivity.CallActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,6 +43,7 @@ public class EndCallFragment extends Fragment {
 
     private static EndCallFragment fragment;
     private View endCallFragment;
+    private ImageButton imEndCall;
 
     /**
      * New instance.
@@ -92,6 +97,10 @@ public class EndCallFragment extends Fragment {
         setRetainInstance(true);
         endCallFragment = View.inflate(getActivity(), R.layout.fragment_end_call, null);
         // Inflate the layout for this fragment
+
+        imEndCall = (ImageButton) endCallFragment.findViewById(R.id.imBt_end_call);
+        imEndCall.setOnClickListener(listener);
+
         return endCallFragment;
     }
 
@@ -143,5 +152,17 @@ public class EndCallFragment extends Fragment {
 // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
+    View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.imBt_end_call:
+                    getActivity().onBackPressed();
+                    break;
+            }
+        }
+    };
+
+
 
 }

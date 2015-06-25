@@ -1,6 +1,9 @@
 package com.example.dev2.faceforapplication.fragments;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,8 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.dev2.faceforapplication.R;
+import com.example.dev2.faceforapplication.otherActivity.CallActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +31,7 @@ public class CallButtonsFragment extends Fragment {
      * The constant TAG.
      */
     public static final String TAG ="CallButtonsFragment";
-    private Button btCall;
+    private ImageButton btCall;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,6 +45,7 @@ public class CallButtonsFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     private static CallButtonsFragment fragment;
+
 
     private View callButtonsFragmetnt;
 
@@ -95,6 +102,9 @@ public class CallButtonsFragment extends Fragment {
         setRetainInstance(true);
         callButtonsFragmetnt = View.inflate(getActivity(), R.layout.fragment_call_buttons, null);
         // Inflate the layout for this fragment
+        btCall = (ImageButton) callButtonsFragmetnt.findViewById(R.id.imBt_call);
+        btCall.setOnClickListener(listener);
+
         return callButtonsFragmetnt;
     }
 
@@ -147,5 +157,23 @@ public class CallButtonsFragment extends Fragment {
 // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
+
+
+    View.OnClickListener  listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.imBt_call:
+                    if (InputPlaceFragment.getTextFromTextView().toString().equals("")) {
+                        Toast.makeText(getActivity(), "Input number phone", Toast.LENGTH_SHORT).show();
+                    }else {
+                        InputPlaceFragment.setTextInToTextView("");
+                        Intent intent = new Intent(getActivity(), CallActivity.class);
+                        startActivity(intent);
+                    }
+                    break;
+            }
+        }
+    };
 
 }

@@ -2,6 +2,9 @@ package com.example.dev2.faceforapplication;
 
 import java.util.Locale;
 
+import android.content.ClipData;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -18,13 +21,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.dev2.faceforapplication.fragments.ButtonsFragment;
+import com.example.dev2.faceforapplication.fragments.CallButtonsFragment;
 import com.example.dev2.faceforapplication.fragments.ContactsFragment;
 import com.example.dev2.faceforapplication.fragments.HistoryFragment;
+import com.example.dev2.faceforapplication.fragments.InputPlaceFragment;
 import com.example.dev2.faceforapplication.fragments.StartPageFragment;
+import com.example.dev2.faceforapplication.otherActivity.SettingActivity;
 
-public class ViewPageActivity extends AppCompatActivity implements ActionBar.TabListener {
+public class ViewPageActivity extends AppCompatActivity implements ActionBar.TabListener,
+        ButtonsFragment.OnFragmentInteractionListener,
+        CallButtonsFragment.OnFragmentInteractionListener,
+        InputPlaceFragment.OnFragmentInteractionListener{
 
     private static final int PAGE_COUNT = 3;
+
+    private Intent intent;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -96,7 +108,9 @@ public class ViewPageActivity extends AppCompatActivity implements ActionBar.Tab
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.item_setting) {
+            intent = new Intent(getApplicationContext(), SettingActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -116,6 +130,11 @@ public class ViewPageActivity extends AppCompatActivity implements ActionBar.Tab
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     /**
