@@ -7,6 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import com.example.dev2.faceforapplication.R;
 
@@ -22,6 +26,8 @@ public class HistoryFragment extends Fragment {
 
     public static final String TAG ="HistoryFragment";
 
+    private ListView listHistory;
+    private ArrayAdapter<String> adapter;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -38,6 +44,14 @@ public class HistoryFragment extends Fragment {
 
     private static HistoryFragment fragment;
     private View historyFragment;
+    String[] names = {
+            "3001",
+            "3002",
+            "3003",
+            "3004",
+            "3005",
+            "3006"
+    };
 
     /**
      * New instance.
@@ -85,6 +99,10 @@ public class HistoryFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
+
     }
 
     @Override
@@ -93,6 +111,10 @@ public class HistoryFragment extends Fragment {
         // Inflate the layout for this fragment
         setRetainInstance(true);
         historyFragment = View.inflate(getActivity(), R.layout.fragment_history, null);
+        listHistory = (ListView) historyFragment.findViewById(R.id.list_history);
+        listHistory.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_activated_1, names);
+        listHistory.setAdapter(adapter);
 
         return historyFragment;
     }

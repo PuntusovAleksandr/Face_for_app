@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.dev2.faceforapplication.R;
 
@@ -36,6 +39,18 @@ public class ContactsFragment extends Fragment {
 
     private static ContactsFragment fragment;
     private View contactsFragment;
+
+    private ListView listViewContacts;
+    private ArrayAdapter<String> adapter;
+
+    private String[] names = {
+            "3001",
+            "3002",
+            "3003",
+            "3004",
+            "3005",
+            "3006"
+    };
 
     /**
      * New instance.
@@ -90,6 +105,11 @@ public class ContactsFragment extends Fragment {
         // Inflate the layout for this fragment
         setRetainInstance(true);
         contactsFragment = View.inflate(getActivity(), R.layout.fragment_contacts, null);
+        listViewContacts = (ListView) contactsFragment.findViewById(R.id.list_contacts);
+        listViewContacts.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_activated_1, names);
+        listViewContacts.setAdapter(adapter);
+
 
         return contactsFragment;
     }
